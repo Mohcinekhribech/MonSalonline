@@ -9,7 +9,7 @@ class RDV extends Controller{
         $RDV = $this->model('RDVModel');
 
         //create RDV
-        if ($RDV->create($data->clientId,$data->client_Date)) {
+        if ($RDV->create($data->clientId,$data->client_date)) {
             echo json_encode(
                 array('message' => 'RDV Created')
             );

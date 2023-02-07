@@ -1,5 +1,6 @@
 <template>
-  <div id="Gallery">
+  <div id="Gallery"></div>
+  <div>
     <h3 class="font-bold text-center my-6 text-md text-lime-800">About Us</h3>
     <h3 class="text-4xl font-bold text-center my-6">The Cut Barber <span class="text-lime-600">Gallery</span></h3>
     <div class="w-5/6 h-fit flex justify-center">

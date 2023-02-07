@@ -10,10 +10,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 </svg>
 
-                 <a class="hover:text-lime- max-md:w-full text-center  max-md:my-2">Home</a>
-                 <a class="hover:text-lime-600 max-md:w-full text-center max-md:my-2">Service</a>
-                 <a class="hover:text-lime-600 max-md:w-full text-center max-md:my-2">About</a>
-                 <a class="hover:text-lime-600 max-md:w-full text-center max-md:my-2">Contact</a>
+                 <a href="#home" class="hover:text-lime- max-md:w-full text-center  max-md:my-2">Home</a>
+                 <a href="#service" class="hover:text-lime-600 max-md:w-full text-center max-md:my-2">Service</a>
+                 <a href="#about" class="hover:text-lime-600 max-md:w-full text-center max-md:my-2">About</a>
+                 <a href="#gallerie" class="hover:text-lime-600 max-md:w-full text-center max-md:my-2">Contact</a>
         </ul>
         <p class="px-4 py-2 bg-lime-600 text-sm font-bold rounded-lg text-white max-md:text-xs">Get Started</p>
     </nav>

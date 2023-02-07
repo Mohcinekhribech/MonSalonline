@@ -9,6 +9,7 @@ class clientModel
   public $Num_tel;
   public $Referance;
 
+
   // Constructor with DB
   public function __construct()
   {
@@ -52,9 +53,9 @@ class clientModel
     // Create query
     $query = 'INSERT INTO client SET Nom = :Nom, Prenom = :Prenom, Num_tel = :Num_tel, Referance = :Referance';
 
+
     // Prepare statement
     $stmt = $this->conn->prepare($query);
-
     // Clean data
     $this->Nom = htmlspecialchars(strip_tags($this->Nom));
     $this->Prenom = htmlspecialchars(strip_tags($this->Prenom));

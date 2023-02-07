@@ -1,5 +1,6 @@
 <template>
-  <div id="about" class="flex my-16 justify-center space-x-10">
+  <div id="about"></div>
+  <div  class="flex my-16 justify-center space-x-10">
     <img class="w-1/3 h-[80vh] ml-6 rounded-lg max-md:hidden"  src="../assets/about.jpg" alt="">
     <div class="md:pl-8 md:pt-8 md:w-1/2 max-md:w-full md:m-4">
         <h3 class="font-bold text-md text-lime-800  max-md:text-center">About Us</h3>

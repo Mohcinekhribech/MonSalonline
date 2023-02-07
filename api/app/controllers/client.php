@@ -1,4 +1,10 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once('phpmailer/src/Exception.php');
+require_once('phpmailer/src/PHPMailer.php');
+require_once('phpmailer/src/SMTP.php');
 require_once('../app/core/Controller.php');
 class client extends Controller
 {
@@ -7,17 +13,33 @@ class client extends Controller
     {
         //Headers
         header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: *');
         $post = $this->model('clientModel');
         $data = json_decode(file_get_contents("php://input"));
+        
+        $post->email = $data->email;
         $post->Nom = $data->Nom;
         $post->Prenom = $data->Prenom;
         $post->Num_tel = $data->Num_tel;
-        $post->Referance = $data->Referance;
+        $post->Referance = uniqid(md5($data->Nom . $data->Prenom . $data->Num_tel), false);
+        
         //create post
         if ($post->create()) {
-            echo json_encode(
-                array('message' => 'Post Created')
-            );
+            $email =new PHPMailer(true);
+            $email->isSMTP();
+            $email->Host = 'smtp.gmail.com';
+            $email->SMTPAuth = true;
+            $email->Username = 'mohcinekhribche123@gmail.com';
+            $email->Password = 'duvdpymzhifeyily';
+            $email->SMTPSecure = 'ssl';
+            $email->Port = 465;
+            $email->setFrom('mohcinekhribche123@gmail.com');
+            $email->addAddress($post->email);
+            $email->Subject = 'Your Referance';
+            $email->Body = 'Your Referance : ' . $post->Referance;
+            $email -> send();
+            echo 'done';
+            
         } else {
             echo json_encode(
                 array('message' => 'Post Not Created')
@@ -58,7 +80,7 @@ class client extends Controller
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                 extract($row);
                 $post_item = array(
-                    'client_date'=> $client_date,
+                    'client_date' => $client_date,
                     'Nom' => $Nom,
                     'Prenom' => $Prenom,
                     'Num_tel' => $Num_tel,
@@ -66,7 +88,7 @@ class client extends Controller
                 );
 
                 //Push to "data"
-                 array_push($post_arr,$post_item);
+                array_push($post_arr, $post_item);
             }
 
             //Turn to json & output
@@ -84,11 +106,11 @@ class client extends Controller
         header('Access-Control-Allow-Origin: *');
         $post = $this->model('clientModel');
         //get Id
-        $id= isset($id) ? $id : die();
+        $id = isset($id) ? $id : die();
 
         //get post 
         $row = $post->read_single($id);
-        
+
 
         //create array
         $post_arr = array(

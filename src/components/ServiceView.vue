@@ -1,5 +1,6 @@
 <template>
-  <div id="service" class="mt-14">
+  <div id="service"></div>
+  <div class="mt-14">
      <h3 class="font-bold text-md text-center text-lime-800">Our Service</h3>
      <div>
         <h3 class="text-3xl font-bold text-center my-12">Our Barber <span class="text-lime-600">Service</span></h3>
