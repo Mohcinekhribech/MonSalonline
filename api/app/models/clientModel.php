@@ -47,6 +47,13 @@ class clientModel
       $this->Referance = $row['Referance'];
     }
   }
+  public function verify($R){
+    $query = 'SELECT * from client where Referance = :Referance';
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':Referance', $R);
+    $stmt->execute();
+    return $stmt;
+  }
   // Create Post
   public function create()
   {

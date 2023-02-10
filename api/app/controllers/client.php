@@ -62,6 +62,35 @@ class client extends Controller
             );
         }
     }
+    public function verify()
+    {
+        //Headers
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: *');
+        $post = $this->model('clientModel');
+        $data = json_decode(file_get_contents("php://input"));
+        $result = $post->verify($data->Referance);
+        // Get row count
+        $num = $result->rowCount();
+        //check if iny posts
+        if ($num > 0) {
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            extract($row);
+            $arr = array(
+                'clientId' => $clientId,
+                'Nom' => $Nom,
+                'Prenom' => $Prenom,
+                'Num_tel' => $Num_tel,
+                'Referance' => $Referance,
+                'message' => 'Client Found'
+            );
+            echo json_encode($arr);
+        }else{
+            echo json_encode(
+                array('message' => 'No Client Found')
+            );
+        }
+    }
     public function read()
     {
         //Headers
