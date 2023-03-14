@@ -30,7 +30,7 @@ class client extends Controller
             $email->Host = 'smtp.gmail.com';
             $email->SMTPAuth = true;
             $email->Username = 'mohcinekhribche123@gmail.com';
-            $email->Password = 'duvdpymzhifeyily';
+            $email->Password = '';
             $email->SMTPSecure = 'ssl';
             $email->Port = 465;
             $email->setFrom('mohcinekhribche123@gmail.com');
